@@ -1,0 +1,11 @@
+{
+  "storage-directory": "/home/amaricich/videos/smaug/",
+  "segments-minutes": 60,
+  "max-segments": 2,
+  "cameras": [
+    {
+      "name": "AviationHallway",
+      "url": "rtsp://admin:robot@172.28.137.102:554/media/video1"
+    }
+  ]
+}
