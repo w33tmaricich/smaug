@@ -4,7 +4,6 @@
   :license {:name "EPL-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[clj-time "0.15.1"]
-                 [org.clojure/core.async "0.4.500"]
                  [org.clojure/data.json "0.2.6"]
                  [org.clojure/tools.cli "0.4.2"]
                  [w33t/kawa "0.1.2"]
