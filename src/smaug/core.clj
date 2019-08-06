@@ -40,7 +40,9 @@
   [["-c" "--config PATH"
     "Path to json config file."
     :default config-file]
-   ["-d" "--display" :default false]
+   ["-d" "--display"
+    "Watch videos as they are recording"
+    :default false]
    ["-h" "--help"]])
 
 (defn- date []
@@ -185,15 +187,23 @@
   "Lets start some recordings!"
   [& args]
   ; parse configuration
-  (let [options (:options (parse-opts args cli-options))
-        display? (-> options :display)
+  (let [{options :options
+         summary :summary} (parse-opts args cli-options)
+        {display? :display
+         help? :help} options
         config (retrieve-configuration (-> options :config))
         {storage-directory :storage-directory
          segments-minutes :segments-minutes
          max-segments :max-segments} config
         ]
 
+    ; print help
+    (if help? (do (println "usage: java -jar smaug-0.1.0-standalone.jar [options]\n\noptions:")
+                  (println summary)
+                  (System/exit 0)))
+
     ; debugging print
+    (println (parse-opts args cli-options))
     (println "Storage location:" storage-directory)
     (println "Capture length:" segments-minutes "minutes")
     (println "Maximum number of files:" max-segments)
